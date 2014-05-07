@@ -22,23 +22,22 @@ namespace Dodge_Paul
 
             // Initialise Game Objects
             bool Quit = false;
-            Form GameForm = new Form() { WindowState = FormWindowState.Maximized, FormBorderStyle = System.Windows.Forms.FormBorderStyle.None, BackColor = Color.Black, Text = "Dodge", MaximizeBox = false, MinimizeBox = false, ControlBox = false };
-            GameForm.Show();
 
-            //Game loop
+            // Game loop
             while (!Quit)
             {
 
-                Thread.Sleep(20);
-                if (Keyboard.IsKeyDown(KeyCode.Escape))
-                    Quit = true;
+                Game.Instance.Update(ref Quit);
+
+                if (!Quit)
+                    Game.Instance.Draw();
 
                 Application.DoEvents();
+                Thread.Sleep(15);
             }
 
-
-            // Cleanup game objects
-            GameForm = null;
+            // Cleanup
+            Game.ClearInstance();
         }
     }
 }

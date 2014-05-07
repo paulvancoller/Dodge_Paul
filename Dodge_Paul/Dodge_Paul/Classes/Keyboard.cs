@@ -9,8 +9,11 @@ namespace Dodge_Paul.Classes
     internal enum KeyCode : int
     {
         Left = 0x25,
-        Right = 0x27, 
-        Escape = 0x1B
+        Up = 0x26,
+        Right = 0x27,
+        Down = 0x28,
+        Escape = 0x1B,
+        Enter = 0x0D
     }
 
     internal static class Keyboard
