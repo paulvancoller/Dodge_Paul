@@ -9,19 +9,15 @@ namespace Dodge_Paul.Classes
 {
     public class GameObjectFactory
     {
-        public static IGameObject NewPlayer(string Name, bool LocalPlayer)
+        public static IGameObject NewPlayer(string Name, int TeamNo, bool LocalPlayer)
         {
-            Player player = new Player();
-            player.Name = Name;
-            player.LocalPlayer = LocalPlayer;
-
+            Player player = new Player(Name, TeamNo, LocalPlayer);
             return player;
         }
 
-        public static IGameObject NewDrop()
+        public static IGameObject NewDrop(int TeamNo)
         {
-            Drop drop = new Drop();
-
+            Drop drop = new Drop(TeamNo);
             return drop;
         }
     }

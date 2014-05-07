@@ -11,29 +11,31 @@ namespace Dodge_Paul.Classes
 {
     public class Drop : GameObject
     {
-        public Drop()
+        public Drop(int teamNo)
         {
             width = GameResources.Instance.DropImage.Width;
             height = GameResources.Instance.DropImage.Height;
 
             // Randomly pick a location in the top quarter of the screen
-            Top = Game.Instance.Randomizer.Next(0, (Game.Instance.GameScreen.Height / 4) - Height);
-            Left = Game.Instance.Randomizer.Next(0, Game.Instance.GameScreen.Width - Width);
-            Speed = Game.Instance.Randomizer.Next(Config.Instance.DropMinSpeed, Config.Instance.DropMaxSpeed);
+            this.top = Game.Instance.Randomizer.Next(0, (Game.Instance.GameScreen.Height / 4) - height);
+            this.left = Game.Instance.Randomizer.Next(0, Game.Instance.GameScreen.Width - width);
+            this.speed = Game.Instance.Randomizer.Next(Config.Instance.DropMinSpeed, Config.Instance.DropMaxSpeed);
+            this.teamNo = teamNo;
+
         }
 
         public override void Update()
         {
-            if (Top > (Game.Instance.GameScreen.Height - Height))
+            if (top > (Game.Instance.GameScreen.Height - height))
             {
                 // Reset position back to top of screen
-                Top = Game.Instance.Randomizer.Next(0, (Game.Instance.GameScreen.Height / 4) - Height);
-                Left = Game.Instance.Randomizer.Next(0, Game.Instance.GameScreen.Width - Width);
-                Speed = Game.Instance.Randomizer.Next(Config.Instance.DropMinSpeed, Config.Instance.DropMaxSpeed);
+                top = Game.Instance.Randomizer.Next(0, (Game.Instance.GameScreen.Height / 4) - height);
+                left = Game.Instance.Randomizer.Next(0, Game.Instance.GameScreen.Width - width);
+                speed = Game.Instance.Randomizer.Next(Config.Instance.DropMinSpeed, Config.Instance.DropMaxSpeed);
             }
             else
             {
-                Top += Speed;
+                top += speed;
             }
 
         }
@@ -45,7 +47,7 @@ namespace Dodge_Paul.Classes
             ImageAttributes attr = new ImageAttributes();
             attr.SetColorKey(DropImage.GetPixel(0, 0), DropImage.GetPixel(0, 0));
 
-            Game.Instance.Canvas.DrawImage(DropImage, new Rectangle(Left, Top, Width, Height), 0, 0, DropImage.Width, DropImage.Height, GraphicsUnit.Pixel, attr);
+            Game.Instance.Canvas.DrawImage(DropImage, new Rectangle(left, top, width, height), 0, 0, DropImage.Width, DropImage.Height, GraphicsUnit.Pixel, attr);
         }
     }
 }

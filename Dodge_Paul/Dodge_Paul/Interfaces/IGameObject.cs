@@ -10,5 +10,12 @@ namespace Dodge_Paul.Interfaces
     {
         void Update();
         void Draw();
+
+        int Left();
+        int Right();
+        int Top();
+        int Bottom();
+        string Name();
+        int TeamNo();
     }
 }

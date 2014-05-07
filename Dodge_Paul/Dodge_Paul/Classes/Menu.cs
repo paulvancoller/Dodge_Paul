@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Dodge_Paul.Classes
@@ -12,7 +13,8 @@ namespace Dodge_Paul.Classes
     class Menu 
     {
         private int MenuSelection;     // 1 = New Game, 2 = Quit game
-        private int MenuState;      // 0 = regular/pause menu, 1 = death menu
+
+        public int MenuState { get; set; }      // 0 = regular/pause menu, 1 = death menu
 
         public Menu()
         {
@@ -22,6 +24,7 @@ namespace Dodge_Paul.Classes
 
         public void Update(ref int SelectedMenuItem)
         {
+            // Check Keys
             switch (MenuState)
             {
                 case 0:
@@ -49,6 +52,11 @@ namespace Dodge_Paul.Classes
 
         private void KeysMenu2(ref int SelectedMenuItem)
         {
+            if (Keyboard.IsKeyPressed(KeyCode.Enter))
+            {
+                MenuState = 0;
+                Thread.Sleep(100);
+            }
 
         }
 
@@ -81,15 +89,19 @@ namespace Dodge_Paul.Classes
 
 
             // Draw selector
-            Image PointerImage = GameResources.Instance.MainMenuPointerImage;
-            Rectangle SelectorPlacement = new Rectangle(
-                MenuPlacement.Left - PointerImage.Width - 10,
-                MenuPlacement.Top + 90 + ((MenuSelection - 1) * 40),
-                PointerImage.Width,
-                PointerImage.Height);
+            switch (MenuState)
+            {
+                case 0:
+                    Image PointerImage = GameResources.Instance.MainMenuPointerImage;
+                    Rectangle SelectorPlacement = new Rectangle(
+                        MenuPlacement.Left - PointerImage.Width - 10,
+                        MenuPlacement.Top + 90 + ((MenuSelection - 1) * 40),
+                        PointerImage.Width,
+                        PointerImage.Height);
 
-            Game.Instance.Canvas.DrawImage(PointerImage, SelectorPlacement, 0, 0, PointerImage.Width, PointerImage.Height, GraphicsUnit.Pixel, attr);
-
+                    Game.Instance.Canvas.DrawImage(PointerImage, SelectorPlacement, 0, 0, PointerImage.Width, PointerImage.Height, GraphicsUnit.Pixel, attr);
+                    break;
+            }
         }
     }
 }

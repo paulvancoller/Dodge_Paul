@@ -11,29 +11,43 @@ namespace Dodge_Paul.Classes
     {
         protected int width;
         protected int height;
-
-        public string Name { get; set; }
-        public int Left { get; set; }
-        public int Top { get; set; }
-        public int Speed;
-
-        public int Width 
-        { 
-            get 
-            {
-                return width;
-            } 
-        }
-
-        public int Height 
-        { 
-            get
-            {
-                return height;
-            } 
-        }
+        protected int left;
+        protected int top;
+        protected string name { get; set; }
+        protected int speed;
+        protected int teamNo;
 
         public abstract void Update();
         public abstract void Draw();
+
+        public int Left()
+        {
+            return left;
+        }
+
+        public int Top()
+        {
+            return top;
+        }
+
+        public int Right()
+        {
+            return left + width;
+        }
+
+        public int Bottom()
+        {
+            return top + height;
+        }
+
+        public string Name()
+        {
+            return name;
+        }
+
+        public int TeamNo()
+        {
+            return teamNo;
+        }
     }
 }
