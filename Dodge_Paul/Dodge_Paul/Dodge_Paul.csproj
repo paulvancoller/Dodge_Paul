@@ -69,6 +69,14 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Graphics\back.bmp" />
+    <Content Include="Graphics\menu1.bmp" />
+    <Content Include="Graphics\menu2.bmp" />
+    <Content Include="Graphics\menupointer.bmp" />
+    <Content Include="Graphics\player.bmp" />
+    <Content Include="Graphics\raindrop.bmp" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
