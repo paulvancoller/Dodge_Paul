@@ -20,11 +20,22 @@ namespace Dodge_Paul.Classes
         {
             width = GameResources.Instance.PlayerImage.Width;
             height = GameResources.Instance.PlayerImage.Height;
+            
+            // Position the player at the bottom of the screen, but horisontally in the middle
+            Left = (Game.Instance.GameScreen.Width - Width) / 2;
+            Top = (Game.Instance.GameScreen.Height - Height);
+
             lives = 1;
+            Speed = Config.Instance.PlayerSpeed;
         }
 
         public override void Update()
         {
+            if ((Keyboard.IsKeyDown(KeyCode.Left)) && (Left > 0))
+                Left -= Speed;
+
+            if ((Keyboard.IsKeyDown(KeyCode.Right)) && (Left < (Game.Instance.GameScreen.Width - width)))
+                Left += Speed;
         }
 
         public override void Draw()

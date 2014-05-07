@@ -37,7 +37,7 @@ namespace Dodge_Paul.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        [global::System.Configuration.DefaultSettingValueAttribute("20")]
         public int DropCount {
             get {
                 return ((int)(this["DropCount"]));
@@ -49,7 +49,7 @@ namespace Dodge_Paul.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
         public int DropMinSpeed {
             get {
                 return ((int)(this["DropMinSpeed"]));
@@ -61,13 +61,25 @@ namespace Dodge_Paul.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
         public int DropMaxSpeed {
             get {
                 return ((int)(this["DropMaxSpeed"]));
             }
             set {
                 this["DropMaxSpeed"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("20")]
+        public int PlayerSpeed {
+            get {
+                return ((int)(this["PlayerSpeed"]));
+            }
+            set {
+                this["PlayerSpeed"] = value;
             }
         }
     }

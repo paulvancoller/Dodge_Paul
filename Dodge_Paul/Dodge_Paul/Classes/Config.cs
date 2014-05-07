@@ -15,6 +15,7 @@ namespace Dodge_Paul.Classes
         private int dropCount;
         private int dropMinSpeed;
         private int dropMaxSpeed;
+        private int playerSpeed;
 
         public static Config Instance
         {
@@ -38,6 +39,7 @@ namespace Dodge_Paul.Classes
             dropCount = Properties.Settings.Default.DropCount;
             dropMinSpeed = Properties.Settings.Default.DropMinSpeed;
             dropMaxSpeed = Properties.Settings.Default.DropMaxSpeed;
+            playerSpeed = Properties.Settings.Default.PlayerSpeed;
         }
 
         public int PlayerCount
@@ -85,6 +87,18 @@ namespace Dodge_Paul.Classes
             set
             {
                 dropMaxSpeed = value;
+            }
+        }
+
+        public int PlayerSpeed
+        {
+            get
+            {
+                return playerSpeed;
+            }
+            set
+            {
+                playerSpeed = value;
             }
         }
 

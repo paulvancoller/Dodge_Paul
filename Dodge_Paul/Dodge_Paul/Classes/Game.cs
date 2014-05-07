@@ -16,12 +16,13 @@ namespace Dodge_Paul.Classes
 
         public GameForm GameScreen;
         public Graphics Canvas;
+        public Random Randomizer;
 
         private bool paused = true;
-        private bool gameValid = true;
+        private bool gameValid = false;
         private Menu GameMenu;
         private Bitmap BackBuffer;
-
+        
         private List<IGameObject> GameObjects;
 
         public static Game Instance
@@ -49,6 +50,8 @@ namespace Dodge_Paul.Classes
 
             BackBuffer = new Bitmap(GameScreen.Width, GameScreen.Height);
             Canvas = Graphics.FromImage(BackBuffer);
+
+            Randomizer = new Random(DateTime.Now.Millisecond);
         }
         
         ~Game()
@@ -57,7 +60,8 @@ namespace Dodge_Paul.Classes
 
             Config.ClearInstance();
             GameResources.ClearInstance();
-            
+
+            Randomizer = null;
             GameObjects = null;
             GameMenu = null;
             BackBuffer = null;
@@ -76,13 +80,14 @@ namespace Dodge_Paul.Classes
             for (int i = 0; i < Config.Instance.DropCount; i++)
                 GameObjects.Add(GameObjectFactory.NewDrop());
 
+            gameValid = true;
             paused = false;
         }
 
         private void CheckInputs(ref bool Quit)
         {
-            if (Keyboard.IsKeyDown(KeyCode.Escape))
-                paused = true;
+            if ((Keyboard.IsKeyDown(KeyCode.Escape)) && (gameValid))
+                paused = !paused;
         }
 
         public void Update(ref bool Quit)
@@ -113,7 +118,6 @@ namespace Dodge_Paul.Classes
             else
             {
                 // Game
-
                 if (!Quit)
                 {
                     foreach (IGameObject item in GameObjects)

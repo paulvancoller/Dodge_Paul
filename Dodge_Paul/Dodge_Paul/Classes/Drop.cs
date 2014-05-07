@@ -15,10 +15,27 @@ namespace Dodge_Paul.Classes
         {
             width = GameResources.Instance.DropImage.Width;
             height = GameResources.Instance.DropImage.Height;
+
+            // Randomly pick a location in the top quarter of the screen
+            Top = Game.Instance.Randomizer.Next(0, (Game.Instance.GameScreen.Height / 4) - Height);
+            Left = Game.Instance.Randomizer.Next(0, Game.Instance.GameScreen.Width - Width);
+            Speed = Game.Instance.Randomizer.Next(Config.Instance.DropMinSpeed, Config.Instance.DropMaxSpeed);
         }
 
         public override void Update()
         {
+            if (Top > (Game.Instance.GameScreen.Height - Height))
+            {
+                // Reset position back to top of screen
+                Top = Game.Instance.Randomizer.Next(0, (Game.Instance.GameScreen.Height / 4) - Height);
+                Left = Game.Instance.Randomizer.Next(0, Game.Instance.GameScreen.Width - Width);
+                Speed = Game.Instance.Randomizer.Next(Config.Instance.DropMinSpeed, Config.Instance.DropMaxSpeed);
+            }
+            else
+            {
+                Top += Speed;
+            }
+
         }
 
         public override void Draw()

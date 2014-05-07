@@ -15,6 +15,7 @@ namespace Dodge_Paul.Classes
         public string Name { get; set; }
         public int Left { get; set; }
         public int Top { get; set; }
+        public int Speed;
 
         public int Width 
         { 

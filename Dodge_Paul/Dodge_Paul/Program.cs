@@ -33,7 +33,7 @@ namespace Dodge_Paul
                     Game.Instance.Draw();
 
                 Application.DoEvents();
-                Thread.Sleep(15);
+                Thread.Sleep(5);
             }
 
             // Cleanup

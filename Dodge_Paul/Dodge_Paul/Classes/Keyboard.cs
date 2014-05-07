@@ -19,10 +19,16 @@ namespace Dodge_Paul.Classes
     internal static class Keyboard
     {
         private const int KeyPressed = 0x8000;
+        private const int KeyUp = 0x0101;
 
         public static bool IsKeyDown(KeyCode key)
         {
             return (GetKeyState((int)key) & KeyPressed) != 0;
+        }
+
+        public static bool IsKeyUp(KeyCode key)
+        {
+            return (GetKeyState((int)key) & KeyUp) != 0;
         }
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
