@@ -13,8 +13,8 @@ namespace Dodge_Paul.Classes
     {
         public Drop()
         {
-            width = 82;
-            height = 182;
+            width = GameResources.Instance.DropImage.Width;
+            height = GameResources.Instance.DropImage.Height;
         }
 
         public override void Update()

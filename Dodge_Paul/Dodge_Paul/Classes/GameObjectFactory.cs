@@ -9,6 +9,8 @@ namespace Dodge_Paul.Classes
 {
     public class GameObjectFactory
     {
+        private static Random rand = new Random(DateTime.Now.Millisecond);
+
         public static IGameObject NewPlayer(string Name, bool LocalPlayer)
         {
             Player player = new Player();
@@ -27,15 +29,9 @@ namespace Dodge_Paul.Classes
             Drop drop = new Drop();
 
             // Randomly pick a location in the top third of the screen
-            drop.Top = RandomPosition(0, (Game.Instance.GameScreen.Height / 3) - drop.Height);
-            drop.Left = RandomPosition(0, Game.Instance.GameScreen.Width - drop.Width);
+            drop.Top = rand.Next(0, (Game.Instance.GameScreen.Height / 3) - drop.Height);
+            drop.Left = rand.Next(0, Game.Instance.GameScreen.Width - drop.Width);
             return drop;
-        }
-
-        private static int RandomPosition(int MinValue, int MaxValue)
-        {
-            Random rand = new Random(DateTime.Now.Millisecond);
-            return rand.Next(MinValue, MaxValue);
         }
     }
 }

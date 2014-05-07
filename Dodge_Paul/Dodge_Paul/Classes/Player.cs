@@ -18,8 +18,8 @@ namespace Dodge_Paul.Classes
 
         public Player()
         {
-            width = 82;
-            height = 182;
+            width = GameResources.Instance.PlayerImage.Width;
+            height = GameResources.Instance.PlayerImage.Height;
             lives = 1;
         }
 
