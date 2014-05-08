@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dodge_Paul.Classes
 {
-    internal enum KeyCode : int
+    public enum KeyCode : int
     {
         Left = 0x25,
         Up = 0x26,
@@ -18,7 +18,7 @@ namespace Dodge_Paul.Classes
         RightShift = 0xA1
     }
 
-    internal static class Keyboard
+    public static class Keyboard
     {
         private const int KeyPressed = 0x8000;
         private const int KeyUp = 0x0101;

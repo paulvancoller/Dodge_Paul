@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Dodge_Paul.Classes
 {
-    public class GameObjectFactory
+    public static class GameObjectFactory
     {
         public static IGameObject NewPlayer(string Name, int TeamNo, bool LocalPlayer)
         {
